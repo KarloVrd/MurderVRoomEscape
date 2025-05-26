@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Anchor
+  - Activator
+  - Activator2
+  - Activator3
   layers:
   - Default
   - TransparentFX
