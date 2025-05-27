@@ -7,7 +7,19 @@ public class SpherePressurePlate : MonoBehaviour
     [SerializeField] private string requiredSphereID = "Activator2";
     public bool isActivated = false;
     public DoorOpen door;
-    [SerializeField] private GameObject magicHat;
+    [SerializeField] private GameObject moustache;
+    [SerializeField] private GameObject picture;
+    private Vector3 originalPicturePosition;
+    private Quaternion originalPictureRotation;
+
+    private void Start()
+    {
+        if (picture != null)
+        {
+            originalPicturePosition = picture.transform.position;
+            originalPictureRotation = picture.transform.rotation;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,9 +47,18 @@ public class SpherePressurePlate : MonoBehaviour
         isActivated = true;
         Debug.Log("Sphere Pressure Plate Activated!");
 
-        if (magicHat != null)
+        if (moustache != null)
         {
-            magicHat.SetActive(true);
+            moustache.SetActive(true);
+        }
+
+        if (picture != null)
+        {
+            Vector3 currentRotation = picture.transform.eulerAngles;
+            picture.transform.eulerAngles = new Vector3(currentRotation.x, 90f, currentRotation.z);
+
+            picture.transform.position = originalPicturePosition - (new Vector3(0f,0f,0.59f));
+
         }
 
         // Optional: Visual or gameplay feedback
@@ -50,9 +71,16 @@ public class SpherePressurePlate : MonoBehaviour
         isActivated = false;
         Debug.Log("Pressure Plate Deactivated!");
 
-        if (magicHat != null)
+        if (moustache != null)
         {
-            magicHat.SetActive(false);
+            moustache.SetActive(false);
+        }
+
+        if (picture != null)
+        {
+            picture.transform.position = originalPicturePosition;
+            picture.transform.rotation = originalPictureRotation;
+
         }
 
         Renderer rend = GetComponent<Renderer>();
