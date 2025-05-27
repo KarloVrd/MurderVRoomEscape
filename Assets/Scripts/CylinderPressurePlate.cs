@@ -7,6 +7,7 @@ public class CylinderPressurePlate : MonoBehaviour
     [SerializeField] private string requiredCylinderID = "Activator3";
     public bool isActivated = false;
     public DoorOpen door;
+    [SerializeField] private GameObject minerHat;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,6 +25,11 @@ public class CylinderPressurePlate : MonoBehaviour
         //dodaj resetiranje - kada se objekt makne s pressure platea se on deaktivira
         isActivated = true;
         Debug.Log("Sphere Pressure Plate Activated!");
+
+        if (minerHat != null)
+        {
+            minerHat.SetActive(true);
+        }
 
         // Optional: Visual or gameplay feedback
         GetComponent<Renderer>().material.color = Color.cyan;
