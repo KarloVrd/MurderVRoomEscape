@@ -53,9 +53,8 @@ public class CubePressurePlate : MonoBehaviour
 
         if (book != null)
         {
-            Vector3 newPos = book.transform.position;
-            newPos.x = -4.761f;
-            book.transform.position = newPos;
+            Animator anim = book.GetComponent<Animator>();
+            anim.SetTrigger("PlaySlide");
         }
 
         // Optional: Visual or gameplay feedback
