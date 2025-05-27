@@ -40,11 +40,13 @@ public class ButtonWrong : MonoBehaviour
 
     private IEnumerator RestoreOriginalColor()
     {
+        OnDisable();
         yield return new WaitForSeconds(2f);
 
         if (objectRenderer != null)
         {
             objectRenderer.material.color = originalColor;
+            OnEnable();
         }
     }
 }

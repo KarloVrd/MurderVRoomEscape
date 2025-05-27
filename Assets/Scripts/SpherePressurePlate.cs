@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SpherePressurePlate : MonoBehaviour
 {
+    public AudioSource impactSound;
+    private bool hasPlayed = false; // To prevent multiple plays
+
     [SerializeField] private string requiredSphereID = "Activator2";
     public bool isActivated = false;
     public DoorOpen door;
@@ -43,9 +46,14 @@ public class SpherePressurePlate : MonoBehaviour
 
     private void ActivatePlate()
     {
-        //dodaj resetiranje - kada se objekt makne s pressure platea se on deaktivira
+        
         isActivated = true;
         Debug.Log("Sphere Pressure Plate Activated!");
+
+        if (hasPlayed == false)
+        {
+            PlayImpactSound();
+        }
 
         if (moustache != null)
         {
@@ -62,7 +70,7 @@ public class SpherePressurePlate : MonoBehaviour
         }
 
         // Optional: Visual or gameplay feedback
-        GetComponent<Renderer>().material.color = Color.cyan;
+        GetComponent<Renderer>().material.color = Color.green;
         door.open();
     }
 
@@ -71,6 +79,7 @@ public class SpherePressurePlate : MonoBehaviour
         isActivated = false;
         Debug.Log("Pressure Plate Deactivated!");
 
+        /*
         if (moustache != null)
         {
             moustache.SetActive(false);
@@ -82,12 +91,26 @@ public class SpherePressurePlate : MonoBehaviour
             picture.transform.rotation = originalPictureRotation;
 
         }
+        */
 
         Renderer rend = GetComponent<Renderer>();
         if (rend != null)
         {
             rend.material.color = Color.gray;
         }
-        door.close();
+        if (door.doorOpened)
+        {
+            door.close();
+        }
+        
+    }
+    //plays the sound of the bucket falling
+    void PlayImpactSound()
+    {
+        if (impactSound != null)
+        {
+            impactSound.Play();
+            hasPlayed = true;
+        }
     }
 }

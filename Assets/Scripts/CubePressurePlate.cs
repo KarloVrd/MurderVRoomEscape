@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CubePressurePlate : MonoBehaviour
 {
+    public AudioSource impactSound;
+    private bool hasPlayed = false; // To prevent multiple plays
+
     [SerializeField] private string requiredCubeID = "Activator";
     public bool isActivated = false;
     public DoorOpen door;
@@ -36,6 +39,11 @@ public class CubePressurePlate : MonoBehaviour
         isActivated = true;
         Debug.Log("Cube Pressure Plate Activated!");
 
+        if (hasPlayed == false)
+        {
+            PlayImpactSound();
+        }
+
         /*
         if (vikingHat != null)
         {
@@ -65,20 +73,33 @@ public class CubePressurePlate : MonoBehaviour
         {
             vikingHat.SetActive(false);
         }
-        */
+        
         if (book != null)
         {
             Vector3 newPos = book.transform.position;
             newPos.x = -4.4923f;
             book.transform.position = newPos;
         }
+        */
 
         Renderer rend = GetComponent<Renderer>();
         if (rend != null)
         {
             rend.material.color = Color.gray;
         }
-        door.close();
+        if (door.doorOpened)
+        {
+            door.close();
+        }
+    }
+    //plays the sound of the bucket falling
+    void PlayImpactSound()
+    {
+        if (impactSound != null)
+        {
+            impactSound.Play();
+            hasPlayed = true;
+        }
     }
 }
 
