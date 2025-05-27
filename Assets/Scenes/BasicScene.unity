@@ -893,15 +893,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7cf3ac7bcd2e5471fb54d5f5da9aad56, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.499
+      value: -6.42
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7cf3ac7bcd2e5471fb54d5f5da9aad56, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.597
+      value: 17.62
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7cf3ac7bcd2e5471fb54d5f5da9aad56, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 116.894
+      value: 115.108
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7cf3ac7bcd2e5471fb54d5f5da9aad56, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2827,7 +2827,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1202278557750872, guid: f29f906fd76b0884f91f07ba3f560ec4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1170590195}
   m_SourcePrefab: {fileID: 100100000, guid: f29f906fd76b0884f91f07ba3f560ec4, type: 3}
 --- !u!4 &663295112 stripped
 Transform:
@@ -2900,6 +2903,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredCylinderID: Activator3
+  isActivated: 0
+  door: {fileID: 1170590195}
 --- !u!1001 &673152585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4235,15 +4240,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 080ad8ef2223242198a30df487d9bcbb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.435
+      value: -3.868
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 080ad8ef2223242198a30df487d9bcbb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.084
+      value: 17.741
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 080ad8ef2223242198a30df487d9bcbb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 120.555
+      value: 121.807
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 080ad8ef2223242198a30df487d9bcbb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5406,6 +5411,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4354458936023278, guid: f2da139fdb8c88745b79f1879a5541f3, type: 3}
   m_PrefabInstance: {fileID: 1125844087}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1170590190 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1202278557750872, guid: f29f906fd76b0884f91f07ba3f560ec4, type: 3}
+  m_PrefabInstance: {fileID: 663295111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1170590195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170590190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c483af1cc32174493fc87420ec9ecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressurePlateCube: {fileID: 2048312591}
+  pressurePlateSphere: {fileID: 1293093453}
+  pressurePlateCylinder: {fileID: 669937197}
 --- !u!1001 &1177353139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6230,6 +6255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredSphereID: Activator2
+  isActivated: 0
+  door: {fileID: 1170590195}
 --- !u!1001 &1302904888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8478,7 +8505,7 @@ Transform:
   m_GameObject: {fileID: 1939800727}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.809, y: 16.568, z: 114.889}
+  m_LocalPosition: {x: -11.787, y: 17.608, z: 121.182}
   m_LocalScale: {x: 0.11, y: 0.11, z: 0.11}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -9115,6 +9142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredCubeID: Activator
+  isActivated: 0
+  door: {fileID: 1170590195}
 --- !u!4 &2049761987 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4579100096229528, guid: 8b52a049bbba76b4187f855da48487cc, type: 3}

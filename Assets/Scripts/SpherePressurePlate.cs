@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpherePressurePlate : MonoBehaviour
 {
     [SerializeField] private string requiredSphereID = "Activator2";
-    private bool isActivated = false;
+    public bool isActivated = false;
+    public DoorOpen door;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -26,5 +27,6 @@ public class SpherePressurePlate : MonoBehaviour
 
         // Optional: Visual or gameplay feedback
         GetComponent<Renderer>().material.color = Color.cyan;
+        door.open();
     }
 }

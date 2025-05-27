@@ -5,7 +5,8 @@ using UnityEngine;
 public class CubePressurePlate : MonoBehaviour
 {
     [SerializeField] private string requiredCubeID = "Activator";
-    private bool isActivated = false;
+    public bool isActivated = false;
+    public DoorOpen door;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -26,6 +27,7 @@ public class CubePressurePlate : MonoBehaviour
 
         // Optional: Visual or gameplay feedback
         GetComponent<Renderer>().material.color = Color.green;
+        door.open();
     }
 }
 
