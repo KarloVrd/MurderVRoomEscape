@@ -21,5 +21,14 @@ public class DoorOpen : MonoBehaviour
             transform.eulerAngles = new Vector3(currentRotation.x, 165.36f, currentRotation.z);
         }
     }
-    
+
+    public void close()
+    {
+        doorOpened = false;
+        Debug.Log("All plates activated - opening door!");
+
+        Vector3 currentRotation = transform.eulerAngles;
+        transform.eulerAngles = new Vector3(currentRotation.x, 90f, currentRotation.z);
+    }
+
 }

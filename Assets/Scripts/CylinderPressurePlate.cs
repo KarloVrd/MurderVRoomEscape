@@ -20,6 +20,15 @@ public class CylinderPressurePlate : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        var idComponent = other.GetComponent<CylinderIdentifier>();
+        if (idComponent != null && idComponent.cylinderID == requiredCylinderID)
+        {
+            DeactivatePlate();
+        }
+    }
+
     private void ActivatePlate()
     {
         //dodaj resetiranje - kada se objekt makne s pressure platea se on deaktivira
@@ -34,5 +43,23 @@ public class CylinderPressurePlate : MonoBehaviour
         // Optional: Visual or gameplay feedback
         GetComponent<Renderer>().material.color = Color.cyan;
         door.open();
+    }
+
+    public void DeactivatePlate()
+    {
+        isActivated = false;
+        Debug.Log("Pressure Plate Deactivated!");
+
+        if (minerHat != null)
+        {
+            minerHat.SetActive(false);
+        }
+
+        Renderer rend = GetComponent<Renderer>();
+        if (rend != null)
+        {
+            rend.material.color = Color.gray;
+        }
+        door.close();
     }
 }
