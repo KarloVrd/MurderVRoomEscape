@@ -35,10 +35,12 @@ public class CylinderPressurePlate : MonoBehaviour
         isActivated = true;
         Debug.Log("Sphere Pressure Plate Activated!");
 
+        
         if (minerHat != null)
         {
             minerHat.SetActive(true);
         }
+        
 
         // Optional: Visual or gameplay feedback
         GetComponent<Renderer>().material.color = Color.cyan;

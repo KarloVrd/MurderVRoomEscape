@@ -8,6 +8,7 @@ public class CubePressurePlate : MonoBehaviour
     public bool isActivated = false;
     public DoorOpen door;
     [SerializeField] private GameObject vikingHat;
+    [SerializeField] private GameObject book;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,9 +36,18 @@ public class CubePressurePlate : MonoBehaviour
         isActivated = true;
         Debug.Log("Cube Pressure Plate Activated!");
 
+        /*
         if (vikingHat != null)
         {
             vikingHat.SetActive(true);
+        }
+        */
+
+        if (book != null)
+        {
+            Vector3 newPos = book.transform.position;
+            newPos.x = -4.761f;
+            book.transform.position = newPos;
         }
 
         // Optional: Visual or gameplay feedback
@@ -50,9 +60,17 @@ public class CubePressurePlate : MonoBehaviour
         isActivated = false;
         Debug.Log("Pressure Plate Deactivated!");
 
+        /*
         if (vikingHat != null)
         {
             vikingHat.SetActive(false);
+        }
+        */
+        if (book != null)
+        {
+            Vector3 newPos = book.transform.position;
+            newPos.x = -4.4923f;
+            book.transform.position = newPos;
         }
 
         Renderer rend = GetComponent<Renderer>();
