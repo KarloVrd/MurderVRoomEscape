@@ -17,7 +17,7 @@ public class RandomInteractablesPlacement : MonoBehaviour
             new Vector3(-1.91299999f, 0.141000003f, 3.4849999f),
             new Vector3(-1.50199997f, 1.11199999f, 2.8599999f), 
             new Vector3(-9.81099987f,0.150000006f,3.44700003f),
-            new Vector3(0.317999989f, 0, 0.490999997f),
+            new Vector3(0.317999989f, 0.15f, 0.490999997f),
         };
 
         // grab children of this game object and place them at random points,
