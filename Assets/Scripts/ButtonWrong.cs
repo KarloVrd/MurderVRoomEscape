@@ -1,14 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using System.Collections;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class ButtonWrong : MonoBehaviour
 {
     public GameObject objectToChange;
-
-    private Renderer objectRenderer;
-    private Color originalColor;
+    public SceneFeedbackManager feedbackManager;
 
     private void OnEnable()
     {
@@ -22,31 +19,20 @@ public class ButtonWrong : MonoBehaviour
 
     private void OnButtonPressed(SelectEnterEventArgs args)
     {
-        if (objectToChange == null) return;
+        Debug.Log("Netočan odgovor!");
 
-        objectRenderer = objectToChange.GetComponent<Renderer>();
-        if (objectRenderer == null) return;
-
-        // Save the original color
-        originalColor = objectRenderer.material.color;
-
-        // Set to red with 40% transparency
-        Color redTransparent = new Color(1f, 0f, 0f, 0.4f);
-        objectRenderer.material.color = redTransparent;
-
-        // Start coroutine to restore color
-        StartCoroutine(RestoreOriginalColor());
-    }
-
-    private IEnumerator RestoreOriginalColor()
-    {
-        OnDisable();
-        yield return new WaitForSeconds(2f);
-
-        if (objectRenderer != null)
+        if (objectToChange != null)
         {
-            objectRenderer.material.color = originalColor;
-            OnEnable();
+            Renderer rend = objectToChange.GetComponent<Renderer>();
+            if (rend != null)
+            {
+                Color redTransparent = new Color(1f, 0f, 0f, 0.4f);
+                rend.material.color = redTransparent;
+            }
         }
+
+        SceneFeedbackManager.Instance.ShowFeedback(
+    "Netočan odgovor!\nPustili ste ubojicu na slobodu!\nKrenite ispočetka!");
+
     }
 }

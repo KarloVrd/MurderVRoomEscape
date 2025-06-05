@@ -1,10 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class ButtonCorrect : MonoBehaviour
 {
     public GameObject objectToChange;
+    public SceneFeedbackManager feedbackManager;
 
     private void OnEnable()
     {
@@ -18,16 +19,21 @@ public class ButtonCorrect : MonoBehaviour
 
     private void OnButtonPressed(SelectEnterEventArgs args)
     {
-        Debug.Log("Button Pressed!");
+        Debug.Log("Točan odgovor!");
 
         if (objectToChange != null)
         {
             Renderer rend = objectToChange.GetComponent<Renderer>();
             if (rend != null)
             {
-                Color newColor = new Color(0f, 1f, 0f, 0.4f); // Green with 40% alpha
+                Color newColor = new Color(0f, 1f, 0f, 0.4f); // zeleno
                 rend.material.color = newColor;
             }
         }
+
+        SceneFeedbackManager.Instance.ShowFeedback(
+    "Točno!\nUspješno ste pronašli ubojicu!\nMožete ponovno pokušati biti detektiv!");
+
     }
+
 }
